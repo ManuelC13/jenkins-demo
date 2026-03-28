@@ -15,7 +15,7 @@ pipeline {
             steps {
                 // Crea una carpeta .venv aislada solo para este proyecto
                 // pytest se instalara ahi adentro, no en tu PC
-                sh 'python -m venv .venv'
+                sh 'python3 -m venv .venv'
             }
         }
 
