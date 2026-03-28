@@ -5,9 +5,7 @@ pipeline {
 
         stage('1. Checkout') {
             steps {
-                // Jenkins descarga el codigo desde GitHub
-                git branch: env.BRANCH_NAME,
-                    url: 'https://github.com/ManuelC13/jenkins-demo'
+                checkout scm
             }
         }
 
