@@ -33,6 +33,13 @@ pipeline {
             }
         }
 
+        stage('5. Desplegar a producción') {
+            steps {
+                // Solo se ejecuta si todas las pruebas pasaron
+                sh 'echo "Desplegando a producción..."'
+            }
+        }
+
     }
 
     post {
