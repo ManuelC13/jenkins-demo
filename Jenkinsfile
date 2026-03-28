@@ -7,7 +7,7 @@ pipeline {
             steps {
                 // Jenkins descarga el codigo desde GitHub
                 git branch: 'main',
-                    url: 'https://github.com/TU_USUARIO/jenkins-demo.git'
+                    url: 'https://github.com/ManuelC13/jenkins-demo'
             }
         }
 
@@ -22,14 +22,14 @@ pipeline {
         stage('3. Instalar dependencias') {
             steps {
                 // Instala pytest DENTRO del entorno virtual
-                bat '.venv\Scripts\pip install pytest'
+                bat '.venv/Scripts/pip install pytest'
             }
         }
 
         stage('4. Ejecutar pruebas') {
             steps {
                 // Ejecuta las pruebas usando el pytest del entorno virtual
-                bat '.venv\Scripts\pytest test_calculadora.py -v'
+                bat '.venv/Scripts/pytest test_calculadora.py -v'
             }
         }
 
