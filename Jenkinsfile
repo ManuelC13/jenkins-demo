@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('1. Checkout') {
+            steps {
+                // Jenkins descarga el codigo desde GitHub
+                git branch: 'main',
+                    url: 'https://github.com/TU_USUARIO/jenkins-demo.git'
+            }
+        }
+
+        stage('2. Crear entorno virtual') {
+            steps {
+                // Crea una carpeta .venv aislada solo para este proyecto
+                // pytest se instalara ahi adentro, no en tu PC
+                bat 'python -m venv .venv'
+            }
+        }
+
+        stage('3. Instalar dependencias') {
+            steps {
+                // Instala pytest DENTRO del entorno virtual
+                bat '.venv\Scripts\pip install pytest'
+            }
+        }
+
+        stage('4. Ejecutar pruebas') {
+            steps {
+                // Ejecuta las pruebas usando el pytest del entorno virtual
+                bat '.venv\Scripts\pytest test_calculadora.py -v'
+            }
+        }
+
+    }
+
+    post {
+        success { echo 'Todas las pruebas pasaron. Pipeline exitoso!' }
+        failure { echo 'Alguna prueba fallo. Revisa el log.' }
+    }
+}
