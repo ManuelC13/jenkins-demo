@@ -15,21 +15,21 @@ pipeline {
             steps {
                 // Crea una carpeta .venv aislada solo para este proyecto
                 // pytest se instalara ahi adentro, no en tu PC
-                bat 'python -m venv .venv'
+                sh 'python -m venv .venv'
             }
         }
 
         stage('3. Instalar dependencias') {
             steps {
                 // Instala pytest DENTRO del entorno virtual
-                bat '.venv/Scripts/pip install pytest'
+                sh '.venv/bin/pip install pytest'
             }
         }
 
         stage('4. Ejecutar pruebas') {
             steps {
                 // Ejecuta las pruebas usando el pytest del entorno virtual
-                bat '.venv/Scripts/pytest test_calculadora.py -v'
+                sh '.venv/bin/pytest test_calculadora.py -v'
             }
         }
 
