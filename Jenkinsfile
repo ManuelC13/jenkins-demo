@@ -3,13 +3,7 @@ pipeline {
 
     stages {
 
-        stage('1. Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
-        stage('2. Crear entorno virtual') {
+        stage('1. Crear entorno virtual') {
             steps {
                 // Crea una carpeta .venv aislada solo para este proyecto
                 // pytest se instalara ahi adentro, no en tu PC
@@ -17,21 +11,21 @@ pipeline {
             }
         }
 
-        stage('3. Instalar dependencias') {
+        stage('2. Instalar dependencias') {
             steps {
                 // Instala pytest DENTRO del entorno virtual
                 sh '.venv/bin/pip install pytest'
             }
         }
 
-        stage('4. Ejecutar pruebas') {
+        stage('3. Ejecutar pruebas') {
             steps {
                 // Ejecuta las pruebas usando el pytest del entorno virtual
                 sh '.venv/bin/pytest tests/test_calculadora.py -v'
             }
         }
 
-        stage('5. Desplegar a producción') {
+        stage('4. Desplegar a producción') {
             steps {
                 // Solo se ejecuta si todas las pruebas pasaron
                 sh 'echo "Desplegando a producción..."'
