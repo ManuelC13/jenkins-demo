@@ -29,7 +29,7 @@ pipeline {
         stage('4. Ejecutar pruebas') {
             steps {
                 // Ejecuta las pruebas usando el pytest del entorno virtual
-                sh '.venv/bin/pytest test_calculadora.py -v'
+                sh '.venv/bin/pytest tests/test_calculadora.py -v'
             }
         }
 

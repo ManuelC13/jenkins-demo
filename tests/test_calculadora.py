@@ -1,5 +1,5 @@
 import pytest
-from calculadora import calculadora
+from calculadora.calculadora import calculadora
 
 calc = calculadora()
 
