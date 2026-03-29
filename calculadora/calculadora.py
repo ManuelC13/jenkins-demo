@@ -9,6 +9,10 @@ class calculadora:
         if b == 0:
             raise ValueError("No se puede dividir entre 0")
         return a / b
+    
+    ## Ejemplo de cambio: nueva función potencia
+    def potencia(self, a, b):
+        return a ** b
 
 if __name__ == "__main__":
     
